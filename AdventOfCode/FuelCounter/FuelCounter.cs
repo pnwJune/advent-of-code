@@ -16,5 +16,16 @@ namespace AdventOfCode.FuelCounter
 			// it's non-sensical to require negative amounts of fuel, so always return at least 0
 			return Math.Max(mass / 3 - 2, 0);
 		}
+
+		public static int CalculateFuelRecursive(int mass)
+		{
+			int sum = FuelCounter.CalculateFuel(mass);
+			if (sum > 0)
+			{
+				sum += FuelCounter.CalculateFuelRecursive(sum);
+			}
+
+			return sum;
+		}
 	}
 }
